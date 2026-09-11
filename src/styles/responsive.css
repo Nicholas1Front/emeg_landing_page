@@ -25,6 +25,11 @@
     .client-card {
         flex-basis: calc((100% - 2rem) / 3);
     }
+
+    .company-numbers__grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.25rem;
+    }
 }
 
 @media (min-width: 1024px) {
@@ -43,6 +48,15 @@
 
     .client-card {
         flex-basis: calc((100% - 3rem) / 4);
+    }
+
+    .company-numbers__grid {
+        gap: 1.5rem;
+    }
+
+    .company-stat {
+        min-height: 220px;
+        padding: 2.5rem;
     }
 }
 
@@ -180,6 +194,24 @@
     .client-card__logo {
         height: 90px;
     }
+
+    .company-numbers__container {
+        gap: 2.5rem;
+    }
+
+    .company-numbers__grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .company-stat {
+        min-height: 165px;
+        padding: 1.5rem;
+    }
+
+    .company-stat__number {
+        font-size: clamp(3rem, 16vw, 4.5rem);
+    }
 }
 
 @media (max-width: 480px) {
@@ -201,6 +233,15 @@
         width: 40px;
         height: 40px;
         font-size: 1rem;
+    }
+
+    .company-stat {
+        min-height: 150px;
+    }
+
+    .company-stat__label {
+        margin-top: 0.75rem;
+        font-size: 0.9rem;
     }
 }
 
