@@ -99,11 +99,11 @@
 .services__description { max-width: 680px; margin-top: 1.25rem; color: var(--color-gray-600); font-size: 1rem; }
 .services__grid { display: grid; gap: 1rem; }
 .service-card { position: relative; display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; min-height: 220px; padding: 2rem; overflow: hidden; border: 1px solid var(--color-gray-100); border-top: 3px solid var(--color-black); border-radius: var(--radius-md); background: var(--color-white); box-shadow: var(--shadow-sm); transition: border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast); }
-.service-card::after { position: absolute; right: -35px; bottom: -45px; width: 120px; height: 120px; border: 24px solid var(--color-gray-100); border-radius: 50%; content: ""; opacity: 0.5; }
+.service-card::after { position: absolute; right: -35px; bottom: -45px; width: 120px; height: 120px; border: 24px solid var(--color-gray-100); border-radius: 50%; content: ""; opacity: 0.5; pointer-events: none; z-index: 0; }
 .service-card:hover { border-top-color: var(--color-red); box-shadow: 0 14px 32px rgba(0, 0, 0, 0.1); transform: translateY(-3px); }
 .service-card--featured { border-top-color: var(--color-red); }
-.service-card__number { color: var(--color-red); font-size: 0.8rem; font-weight: 800; letter-spacing: 0.12em; }
-.service-card__content { align-self: center; }
+.service-card__number { position: relative; z-index: 1; color: var(--color-red); font-size: 0.8rem; font-weight: 800; letter-spacing: 0.12em; }
+.service-card__content { position: relative; z-index: 1; align-self: center; }
 .service-card__title { font-size: clamp(1.25rem, 3vw, 1.65rem); line-height: 1.15; }
 .service-card__text { margin-top: 0.75rem; color: var(--color-gray-600); font-size: 0.95rem; }
 
@@ -120,3 +120,49 @@
 .workflow-step__content { align-self: center; }
 .workflow-step__title { font-size: clamp(1.2rem, 3vw, 1.5rem); line-height: 1.15; }
 .workflow-step__text { max-width: 700px; margin-top: 0.5rem; color: var(--color-gray-600); font-size: 0.95rem; }
+
+/* Service card layering keeps the decorative circle behind all readable content. */
+.service-card__number,
+.service-card__content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Workflow trajectory */
+.workflow-step:nth-child(1) { --workflow-accent: #c8102e; }
+.workflow-step:nth-child(2) { --workflow-accent: #b20e29; }
+.workflow-step:nth-child(3) { --workflow-accent: #9f0d24; }
+.workflow-step:nth-child(4) { --workflow-accent: #870b1f; }
+
+.workflow-step {
+    border-top-color: color-mix(in srgb, var(--workflow-accent) 28%, var(--color-gray-100));
+}
+
+.workflow-step__number {
+    border-color: var(--workflow-accent);
+    background: color-mix(in srgb, var(--workflow-accent) 8%, var(--color-white));
+    color: var(--workflow-accent);
+}
+
+.workflow-step__content {
+    position: relative;
+}
+
+.workflow-step__title {
+    color: var(--color-black);
+}
+
+@media (min-width: 1024px) {
+    .workflow-step:not(:last-child)::after {
+        position: absolute;
+        top: 50%;
+        right: -1.05rem;
+        width: 1.25rem;
+        height: 1.25rem;
+        border-top: 3px solid var(--workflow-accent);
+        border-right: 3px solid var(--workflow-accent);
+        content: "";
+        transform: translateY(-50%) rotate(45deg);
+        z-index: 2;
+    }
+}

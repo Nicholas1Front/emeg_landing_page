@@ -20,7 +20,7 @@
     .services__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
     .service-card { min-height: 245px; padding: 2.25rem; }
     .workflow__steps { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; }
-    .workflow-step { display: flex; min-height: 260px; flex-direction: column; gap: 1.5rem; padding: 2rem 1.5rem; border: 1px solid var(--color-gray-100); border-top: 3px solid var(--color-black); background: var(--color-gray-50); }
+    .workflow-step { display: flex; min-height: 260px; flex-direction: column; gap: 1.5rem; padding: 2rem 1.5rem; border: 1px solid var(--color-gray-100); border-top: 3px solid var(--workflow-accent); background: color-mix(in srgb, var(--workflow-accent) 4%, var(--color-gray-50)); }
     .workflow-step:last-child { border-bottom: 1px solid var(--color-gray-100); }
     .workflow-step__number { flex-shrink: 0; }
 }
@@ -53,8 +53,8 @@
     .about__specialty { padding: 1.5rem; }
     .clients__carousel { grid-template-columns: 44px minmax(0, 1fr) 44px; gap: 0.5rem; padding: 0.3rem 0.35rem; }
     .clients__viewport { order: initial; }
-    .clients__control { width: 44px; height: 44px; }
     .clients__control--previous, .clients__control--next { order: initial; }
+    .clients__control { width: 44px; height: 44px; }
     .client-card { flex-basis: 100%; min-height: 160px; padding: 1.25rem; }
     .client-card__logo { height: 90px; }
     .company-numbers__container { gap: 2.5rem; }
@@ -81,6 +81,24 @@
     .service-card__number { font-size: 0.75rem; }
     .workflow-step { grid-template-columns: 48px minmax(0, 1fr); gap: 0.75rem; }
     .workflow-step__number { width: 40px; height: 40px; font-size: 0.72rem; }
+}
+
+@media (max-width: 767px) {
+    .workflow-step:not(:last-child) {
+        padding-bottom: 3rem;
+    }
+
+    .workflow-step:not(:last-child)::after {
+        position: absolute;
+        bottom: 0.8rem;
+        left: 20px;
+        width: 10px;
+        height: 10px;
+        border-right: 2px solid var(--workflow-accent);
+        border-bottom: 2px solid var(--workflow-accent);
+        content: "";
+        transform: rotate(45deg);
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
