@@ -243,3 +243,77 @@ if (clientsCarousel) {
     buildCarousel();
     resetAutoplay();
 }
+
+const companyNumbers = document.querySelector('.company-numbers');
+const companyStatNumbers = document.querySelectorAll('.company-stat__number[data-target]');
+
+if (companyNumbers && companyStatNumbers.length) {
+    const animationDuration = 1500;
+    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let hasAnimated = false;
+
+    const setFinalValues = () => {
+        companyStatNumbers.forEach((numberElement) => {
+            const target = Number(numberElement.dataset.target);
+            numberElement.textContent = `+${target}`;
+        });
+    };
+
+    const animateNumbers = () => {
+        if (hasAnimated) {
+            return;
+        }
+
+        hasAnimated = true;
+
+        if (reducedMotionQuery.matches) {
+            setFinalValues();
+            return;
+        }
+
+        const startTime = performance.now();
+
+        const updateNumbers = (currentTime) => {
+            const progress = Math.min(
+                (currentTime - startTime) / animationDuration,
+                1
+            );
+
+            const easedProgress = 1 - Math.pow(1 - progress, 3);
+
+            companyStatNumbers.forEach((numberElement) => {
+                const target = Number(numberElement.dataset.target);
+                const currentValue = Math.round(target * easedProgress);
+
+                numberElement.textContent = `+${currentValue}`;
+            });
+
+            if (progress < 1) {
+                window.requestAnimationFrame(updateNumbers);
+                return;
+            }
+
+            setFinalValues();
+        };
+
+        window.requestAnimationFrame(updateNumbers);
+    };
+
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(
+            (entries, currentObserver) => {
+                if (!entries.some((entry) => entry.isIntersecting)) {
+                    return;
+                }
+
+                animateNumbers();
+                currentObserver.disconnect();
+            },
+            { threshold: 0.35 }
+        );
+
+        observer.observe(companyNumbers);
+    } else {
+        animateNumbers();
+    }
+}
