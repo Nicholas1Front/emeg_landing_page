@@ -1,0 +1,24 @@
+:root {
+    --color-white: #ffffff;
+    --color-black: #111111;
+    --color-red: #c8102e;
+    --color-red-dark: #9f0d24;
+    --color-gray-50: #f7f7f7;
+    --color-gray-100: #eeeeee;
+    --color-gray-600: #666666;
+    --color-gray-800: #242424;
+
+    --font-family-base: Arial, Helvetica, sans-serif;
+
+    --container-width: 1200px;
+    --container-padding: 1.25rem;
+
+    --header-height: 76px;
+    --section-padding: 5rem;
+
+    --radius-sm: 0.35rem;
+    --radius-md: 0.75rem;
+    --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.08);
+
+    --transition-fast: 180ms ease;
+}
