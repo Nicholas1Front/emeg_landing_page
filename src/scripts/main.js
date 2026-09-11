@@ -37,3 +37,209 @@ if (menuToggle && navigation) {
         }
     });
 }
+
+const clientsCarousel = document.querySelector('.clients__carousel');
+
+if (clientsCarousel) {
+    const viewport = clientsCarousel.querySelector('.clients__viewport');
+    const track = clientsCarousel.querySelector('.clients__track');
+    const previousButton = clientsCarousel.querySelector('.clients__control--previous');
+    const nextButton = clientsCarousel.querySelector('.clients__control--next');
+    const originalCards = Array.from(track.querySelectorAll('.client-card'));
+    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    const autoplayDelay = 4500;
+    let visibleCount = 1;
+    let currentIndex = 0;
+    let autoplayId = null;
+    let isAnimating = false;
+    let rebuildTimeoutId = null;
+
+    const getVisibleCount = () => {
+        if (window.innerWidth >= 1024) {
+            return 4;
+        }
+
+        if (window.innerWidth >= 768) {
+            return 3;
+        }
+
+        return 1;
+    };
+
+    const setTransition = (enabled) => {
+        track.style.transition = enabled && !reducedMotionQuery.matches
+            ? 'transform 500ms ease'
+            : 'none';
+    };
+
+    const updatePosition = () => {
+        const activeCard = track.children[currentIndex];
+
+        if (!activeCard) {
+            return;
+        }
+
+        track.style.transform = `translate3d(-${activeCard.offsetLeft}px, 0, 0)`;
+    };
+
+    const createClones = () => {
+        const firstCards = originalCards.slice(0, visibleCount);
+        const lastCards = originalCards.slice(-visibleCount);
+
+        lastCards.reverse().forEach((card) => {
+            const clone = card.cloneNode(true);
+            clone.dataset.carouselClone = 'true';
+            clone.setAttribute('aria-hidden', 'true');
+            track.prepend(clone);
+        });
+
+        firstCards.forEach((card) => {
+            const clone = card.cloneNode(true);
+            clone.dataset.carouselClone = 'true';
+            clone.setAttribute('aria-hidden', 'true');
+            track.append(clone);
+        });
+    };
+
+    const buildCarousel = () => {
+        visibleCount = getVisibleCount();
+        track.querySelectorAll('[data-carousel-clone="true"]').forEach((clone) => {
+            clone.remove();
+        });
+
+        createClones();
+        currentIndex = visibleCount;
+        isAnimating = false;
+        setTransition(false);
+        updatePosition();
+
+        requestAnimationFrame(() => {
+            if (!reducedMotionQuery.matches) {
+                setTransition(true);
+            }
+        });
+    };
+
+    const goTo = (index) => {
+        if (isAnimating || originalCards.length <= visibleCount) {
+            return;
+        }
+
+        currentIndex = index;
+        isAnimating = true;
+        setTransition(true);
+        updatePosition();
+    };
+
+    const resetAutoplay = () => {
+        if (autoplayId) {
+            window.clearInterval(autoplayId);
+        }
+
+        if (reducedMotionQuery.matches || originalCards.length <= visibleCount) {
+            autoplayId = null;
+            return;
+        }
+
+        autoplayId = window.setInterval(() => {
+            goTo(currentIndex + 1);
+        }, autoplayDelay);
+    };
+
+    const stopAutoplay = () => {
+        if (autoplayId) {
+            window.clearInterval(autoplayId);
+            autoplayId = null;
+        }
+    };
+
+    const handleTransitionEnd = (event) => {
+        if (event.propertyName !== 'transform') {
+            return;
+        }
+
+        isAnimating = false;
+
+        const firstCloneIndex = visibleCount + originalCards.length;
+        const lastCloneIndex = visibleCount - 1;
+
+        if (currentIndex >= firstCloneIndex) {
+            currentIndex = visibleCount;
+            setTransition(false);
+            updatePosition();
+
+            requestAnimationFrame(() => {
+                setTransition(true);
+            });
+        } else if (currentIndex <= lastCloneIndex) {
+            currentIndex = visibleCount + originalCards.length - 1;
+            setTransition(false);
+            updatePosition();
+
+            requestAnimationFrame(() => {
+                setTransition(true);
+            });
+        }
+    };
+
+    previousButton?.addEventListener('click', () => {
+        goTo(currentIndex - 1);
+        resetAutoplay();
+    });
+
+    nextButton?.addEventListener('click', () => {
+        goTo(currentIndex + 1);
+        resetAutoplay();
+    });
+
+    track.addEventListener('transitionend', handleTransitionEnd);
+
+    clientsCarousel.addEventListener('mouseenter', stopAutoplay);
+    clientsCarousel.addEventListener('mouseleave', resetAutoplay);
+
+    clientsCarousel.addEventListener('focusin', stopAutoplay);
+    clientsCarousel.addEventListener('focusout', (event) => {
+        if (!clientsCarousel.contains(event.relatedTarget)) {
+            resetAutoplay();
+        }
+    });
+
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            stopAutoplay();
+        } else {
+            resetAutoplay();
+        }
+    });
+
+    const handleMotionPreferenceChange = () => {
+        stopAutoplay();
+        setTransition(true);
+        resetAutoplay();
+    };
+
+    if (reducedMotionQuery.addEventListener) {
+        reducedMotionQuery.addEventListener('change', handleMotionPreferenceChange);
+    } else {
+        reducedMotionQuery.addListener(handleMotionPreferenceChange);
+    }
+
+    window.addEventListener('resize', () => {
+        const nextVisibleCount = getVisibleCount();
+
+        if (nextVisibleCount === visibleCount) {
+            return;
+        }
+
+        window.clearTimeout(rebuildTimeoutId);
+        rebuildTimeoutId = window.setTimeout(() => {
+            stopAutoplay();
+            buildCarousel();
+            resetAutoplay();
+        }, 150);
+    });
+
+    buildCarousel();
+    resetAutoplay();
+}
