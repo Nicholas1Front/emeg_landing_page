@@ -8,8 +8,9 @@
     .client-card { flex-basis: calc((100% - 2rem) / 3); }
     .company-numbers__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
 
-    .services__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+    .services__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; align-items: stretch; }
     .service-card { min-height: 245px; padding: 2.25rem; }
+    .service-card--wide { grid-column: auto; }
 
     .workflow__steps { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; align-items: stretch; }
     .workflow-step { display: flex; min-height: 290px; flex-direction: column; gap: 1.5rem; padding: 2rem 1.5rem; border: 1px solid rgba(255, 255, 255, 0.1); border-right: 0; background: rgba(255, 255, 255, 0.025); }
@@ -30,8 +31,28 @@
     .client-card { flex-basis: calc((100% - 3rem) / 4); }
     .company-numbers__grid { gap: 1.5rem; }
     .company-stat { min-height: 220px; padding: 2.5rem; }
-    .services__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
-    .service-card--wide { grid-column: 1 / -1; }
+
+    /* Services: 3 equal columns in the first row and 2 centered cards below. */
+    .services__grid {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        gap: 1.5rem;
+        align-items: stretch;
+    }
+
+    .services__grid .service-card {
+        grid-column: span 4;
+        width: 100%;
+    }
+
+    .services__grid .service-card:nth-child(4) {
+        grid-column: 3 / span 4;
+    }
+
+    .services__grid .service-card:nth-child(5) {
+        grid-column: 7 / span 4;
+    }
+
+    .service-card--wide { grid-column: 7 / span 4; }
     .workflow-step { min-height: 310px; padding: 2.25rem 1.75rem; }
 }
 
