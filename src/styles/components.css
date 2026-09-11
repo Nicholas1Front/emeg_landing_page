@@ -381,7 +381,7 @@
 }
 
 .clients__container {
-    overflow: hidden;
+    overflow: visible;
 }
 
 .clients__header {
@@ -407,6 +407,7 @@
     align-items: center;
     gap: 1rem;
     margin-top: 3rem;
+    padding: 0.3rem;
 }
 
 .clients__viewport {
@@ -415,15 +416,17 @@
 }
 
 .clients__track {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    display: flex;
     gap: 1rem;
+    will-change: transform;
+    transition: transform 500ms ease;
 }
 
 .client-card {
     display: flex;
     min-width: 0;
     min-height: 180px;
+    flex: 0 0 calc((100% - 3rem) / 4);
     align-items: center;
     justify-content: center;
     padding: 1.5rem;
@@ -473,5 +476,11 @@
 
 .clients__control:focus-visible {
     outline: 2px solid var(--color-red);
-    outline-offset: 3px;
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .clients__track {
+        transition: none;
+    }
 }
