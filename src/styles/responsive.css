@@ -1,13 +1,26 @@
 @media (min-width: 768px) {
     :root { --container-padding: 2rem; --section-padding: 6rem; }
+
     .hero__container { grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr); gap: 4rem; }
     .hero__visual { min-height: 420px; }
     .hero__logo { width: min(100%, 380px); }
     .about__container { grid-template-columns: minmax(0, 1.3fr) minmax(300px, 0.7fr); gap: 5rem; }
     .client-card { flex-basis: calc((100% - 2rem) / 3); }
     .company-numbers__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+
     .services__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
-    .workflow-step { grid-template-columns: 88px minmax(0, 1fr); padding-block: 2rem; }
+    .service-card { min-height: 245px; padding: 2.25rem; }
+
+    .workflow__steps { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; align-items: stretch; }
+    .workflow-step { display: flex; min-height: 290px; flex-direction: column; gap: 1.5rem; padding: 2rem 1.5rem; border: 1px solid rgba(255, 255, 255, 0.1); border-right: 0; background: rgba(255, 255, 255, 0.025); }
+    .workflow-step:first-child { border-radius: var(--radius-md) 0 0 var(--radius-md); }
+    .workflow-step:last-child { border-right: 1px solid rgba(255, 255, 255, 0.1); border-radius: 0 var(--radius-md) var(--radius-md) 0; }
+    .workflow-step:not(:last-child) { padding-bottom: 2rem; }
+    .workflow-step__node { justify-content: flex-start; }
+    .workflow-step__node::after { top: 26px; right: -1px; bottom: auto; left: auto; width: calc(100% + 2rem); height: 1px; background: linear-gradient(to right, var(--workflow-accent), rgba(200, 16, 46, 0.2)); }
+    .workflow-step__number { z-index: 2; }
+    .workflow-step__arrow { display: block; top: 23px; right: -0.45rem; bottom: auto; z-index: 3; font-size: 1.1rem; line-height: 1; }
+    .workflow-step:last-child .workflow-step__arrow { display: none; }
 }
 
 @media (min-width: 1024px) {
@@ -18,17 +31,22 @@
     .company-numbers__grid { gap: 1.5rem; }
     .company-stat { min-height: 220px; padding: 2.5rem; }
     .services__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
-    .service-card { min-height: 245px; padding: 2.25rem; }
-    .workflow__steps { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; }
-    .workflow-step { display: flex; min-height: 260px; flex-direction: column; gap: 1.5rem; padding: 2rem 1.5rem; border: 1px solid var(--color-gray-100); border-top: 3px solid var(--workflow-accent); background: color-mix(in srgb, var(--workflow-accent) 4%, var(--color-gray-50)); }
-    .workflow-step:last-child { border-bottom: 1px solid var(--color-gray-100); }
-    .workflow-step__number { flex-shrink: 0; }
+    .service-card--wide { grid-column: 1 / -1; }
+    .workflow-step { min-height: 310px; padding: 2.25rem 1.75rem; }
 }
 
 @media (max-width: 900px) {
-    .site-header__container { gap: 1rem; }
-    .site-header__navigation { gap: 0.9rem; }
-    .site-header__link { font-size: 0.78rem; }
+    .site-header .site-header__container { position: relative; min-height: 72px; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 0; padding-block: 0.65rem; }
+    .site-header .site-header__brand { align-self: center; }
+    .site-header .site-header__logo { width: 72px; height: 48px; }
+    .site-header .site-header__toggle { display: inline-flex; margin-left: auto; }
+    .site-header .site-header__navigation { display: grid; grid-template-rows: 0fr; width: 100%; margin-left: 0; overflow: hidden; opacity: 0; transition: grid-template-rows 250ms ease, opacity 180ms ease; }
+    .site-header .site-header__navigation.is-open { grid-template-rows: 1fr; margin-top: 0.75rem; padding-bottom: 0.35rem; opacity: 1; }
+    .site-header .site-header__menu { min-height: 0; flex-direction: column; align-items: stretch; justify-content: flex-start; gap: 0; overflow: hidden; border-top: 1px solid var(--color-gray-100); }
+    .site-header .site-header__item { border-bottom: 1px solid var(--color-gray-100); }
+    .site-header .site-header__link { display: flex; width: 100%; min-height: 44px; align-items: center; padding: 0.7rem 0.25rem; font-size: 0.88rem; }
+    .site-header .site-header__link::after { right: auto; bottom: 0; left: 0; width: 28px; transform-origin: left; }
+
     .clients__carousel { grid-template-columns: 42px minmax(0, 1fr) 42px; gap: 0.75rem; }
     .clients__control { width: 42px; height: 42px; }
 }
@@ -36,12 +54,6 @@
 @media (max-width: 767px) {
     :root { --header-height: auto; --section-padding: 4rem; }
     .site-header { position: relative; }
-    .site-header__container { min-height: auto; flex-direction: column; align-items: stretch; padding-block: 0.9rem; }
-    .site-header__brand { align-self: center; }
-    .site-header__logo { width: 54px; }
-    .site-header__navigation { width: 100%; justify-content: flex-start; gap: 0.25rem; overflow-x: auto; padding-bottom: 0.2rem; scrollbar-width: none; }
-    .site-header__navigation::-webkit-scrollbar { display: none; }
-    .site-header__link { flex: 0 0 auto; padding: 0.45rem 0.65rem; font-size: 0.78rem; }
     .hero { min-height: auto; }
     .hero__container { padding-block: 2rem; }
     .hero__visual { display: none; }
@@ -51,23 +63,32 @@
     .hero__button { width: 100%; }
     .hero__highlights { flex-direction: column; gap: 0.65rem; }
     .about__specialty { padding: 1.5rem; }
+
     .clients__carousel { grid-template-columns: 44px minmax(0, 1fr) 44px; gap: 0.5rem; padding: 0.3rem 0.35rem; }
-    .clients__viewport { order: initial; }
-    .clients__control--previous, .clients__control--next { order: initial; }
     .clients__control { width: 44px; height: 44px; }
     .client-card { flex-basis: 100%; min-height: 160px; padding: 1.25rem; }
     .client-card__logo { height: 90px; }
+
     .company-numbers__container { gap: 2.5rem; }
     .company-numbers__grid { grid-template-columns: 1fr; gap: 1rem; }
     .company-stat { min-height: 165px; padding: 1.5rem; }
     .company-stat__number { font-size: clamp(3rem, 16vw, 4.5rem); }
+
     .services__container, .workflow__container { gap: 2.5rem; }
     .services__grid { grid-template-columns: 1fr; gap: 1rem; }
-    .service-card { min-height: 190px; padding: 1.5rem; grid-template-columns: 42px minmax(0, 1fr); gap: 1rem; }
-    .service-card::after { right: -45px; bottom: -55px; width: 110px; height: 110px; border-width: 22px; }
-    .workflow__steps { gap: 0; }
-    .workflow-step { grid-template-columns: 58px minmax(0, 1fr); gap: 1rem; padding-block: 1.5rem; }
+    .service-card { grid-template-columns: 42px minmax(0, 1fr); gap: 1rem; min-height: 205px; padding: 1.5rem; }
+    .service-card--wide { grid-column: auto; }
+    .service-card::before { width: 150px; height: 150px; border-width: 30px; }
+
+    .workflow__steps { grid-template-columns: 1fr; gap: 0; }
+    .workflow-step,
+    .workflow-step:not(:last-child) { display: grid; grid-template-columns: 52px minmax(0, 1fr); min-height: 0; gap: 1rem; padding: 1.5rem 0 3.25rem; border: 0; border-bottom: 1px solid rgba(255, 255, 255, 0.08); background: transparent; border-radius: 0; }
+    .workflow-step:last-child { padding-bottom: 0; border-bottom: 0; }
+    .workflow-step__node { justify-content: center; }
+    .workflow-step__node::after { top: 52px; bottom: -3.25rem; left: 50%; width: 1px; height: auto; background: linear-gradient(to bottom, var(--workflow-accent), rgba(200, 16, 46, 0.08)); }
     .workflow-step__number { width: 44px; height: 44px; }
+    .workflow-step__arrow { display: block; right: auto; bottom: 0.85rem; left: 16px; top: auto; font-size: 1.2rem; transform: rotate(90deg); }
+    .workflow-step:last-child .workflow-step__arrow { display: none; }
 }
 
 @media (max-width: 480px) {
@@ -77,28 +98,11 @@
     .clients__control { width: 40px; height: 40px; font-size: 1rem; }
     .company-stat { min-height: 150px; }
     .company-stat__label { margin-top: 0.75rem; font-size: 0.9rem; }
-    .service-card { grid-template-columns: 1fr; gap: 0.75rem; min-height: 175px; }
+    .service-card { grid-template-columns: 1fr; gap: 0.75rem; min-height: 180px; }
     .service-card__number { font-size: 0.75rem; }
-    .workflow-step { grid-template-columns: 48px minmax(0, 1fr); gap: 0.75rem; }
+    .service-card__icon { width: 42px; height: 42px; }
+    .workflow-step, .workflow-step:not(:last-child) { grid-template-columns: 46px minmax(0, 1fr); gap: 0.75rem; }
     .workflow-step__number { width: 40px; height: 40px; font-size: 0.72rem; }
-}
-
-@media (max-width: 767px) {
-    .workflow-step:not(:last-child) {
-        padding-bottom: 3rem;
-    }
-
-    .workflow-step:not(:last-child)::after {
-        position: absolute;
-        bottom: 0.8rem;
-        left: 20px;
-        width: 10px;
-        height: 10px;
-        border-right: 2px solid var(--workflow-accent);
-        border-bottom: 2px solid var(--workflow-accent);
-        content: "";
-        transform: rotate(45deg);
-    }
 }
 
 @media (prefers-reduced-motion: reduce) {
