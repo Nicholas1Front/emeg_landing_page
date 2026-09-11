@@ -22,8 +22,8 @@
         gap: 5rem;
     }
 
-    .clients__track {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+    .client-card {
+        flex-basis: calc((100% - 2rem) / 3);
     }
 }
 
@@ -41,8 +41,8 @@
         font-size: clamp(3.5rem, 5vw, 5rem);
     }
 
-    .clients__track {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+    .client-card {
+        flex-basis: calc((100% - 3rem) / 4);
     }
 }
 
@@ -152,12 +152,13 @@
     }
 
     .clients__carousel {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+        grid-template-columns: 44px minmax(0, 1fr) 44px;
+        gap: 0.5rem;
+        padding: 0.3rem 0.35rem;
     }
 
     .clients__viewport {
-        order: 1;
+        order: initial;
     }
 
     .clients__control {
@@ -165,19 +166,13 @@
         height: 44px;
     }
 
-    .clients__control--previous {
-        order: 2;
-    }
-
+    .clients__control--previous,
     .clients__control--next {
-        order: 3;
-    }
-
-    .clients__track {
-        grid-template-columns: 1fr;
+        order: initial;
     }
 
     .client-card {
+        flex-basis: 100%;
         min-height: 160px;
         padding: 1.25rem;
     }
@@ -198,6 +193,14 @@
 
     .clients__carousel {
         margin-top: 2rem;
+        grid-template-columns: 40px minmax(0, 1fr) 40px;
+        gap: 0.4rem;
+    }
+
+    .clients__control {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
     }
 }
 
@@ -211,5 +214,9 @@
     *::after {
         scroll-behavior: auto !important;
         transition-duration: 0.01ms !important;
+    }
+
+    .clients__track {
+        transition: none;
     }
 }
