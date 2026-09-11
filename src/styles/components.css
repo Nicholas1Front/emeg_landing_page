@@ -7,34 +7,54 @@
 }
 
 .site-header__brand {
+    display: flex;
     flex-shrink: 0;
+    align-items: center;
 }
 
 .site-header__logo {
-    width: 58px;
-    height: auto;
+    display: block;
+    width: 68px;
+    height: 52px;
+    object-fit: contain;
+    object-position: center;
 }
 
 .site-header__navigation {
     display: flex;
     align-items: center;
+    margin-left: auto;
+}
+
+.site-header__menu {
+    display: flex;
+    align-items: center;
     justify-content: flex-end;
-    gap: 1.5rem;
+    gap: 1.25rem;
+    list-style: none;
+}
+
+.site-header__item {
+    list-style: none;
 }
 
 .site-header__link {
     position: relative;
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
     padding-block: 0.5rem;
     color: var(--color-gray-800);
-    font-size: 0.9rem;
+    font-size: 0.86rem;
     font-weight: 700;
+    white-space: nowrap;
     transition: color var(--transition-fast);
 }
 
 .site-header__link::after {
     position: absolute;
     right: 0;
-    bottom: 0;
+    bottom: 3px;
     left: 0;
     height: 2px;
     background: var(--color-red);
@@ -52,6 +72,48 @@
 .site-header__link:hover::after,
 .site-header__link:focus-visible::after {
     transform: scaleX(1);
+}
+
+.site-header__toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    border: 1px solid var(--color-gray-100);
+    border-radius: var(--radius-sm);
+    background: var(--color-white);
+    color: var(--color-black);
+    cursor: pointer;
+}
+
+.site-header__toggle-line {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: currentColor;
+    transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.site-header__toggle:hover,
+.site-header__toggle:focus-visible {
+    border-color: var(--color-red);
+    color: var(--color-red);
+}
+
+.site-header__toggle[aria-expanded="true"] .site-header__toggle-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.site-header__toggle[aria-expanded="true"] .site-header__toggle-line:nth-child(2) {
+    opacity: 0;
+}
+
+.site-header__toggle[aria-expanded="true"] .site-header__toggle-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
 }
 
 .hero {
