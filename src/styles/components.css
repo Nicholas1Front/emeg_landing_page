@@ -479,6 +479,70 @@
     outline-offset: 2px;
 }
 
+.company-numbers {
+    background: var(--color-black);
+    color: var(--color-white);
+}
+
+.company-numbers__container {
+    display: grid;
+    gap: 3rem;
+}
+
+.company-numbers__header {
+    max-width: 720px;
+}
+
+.company-numbers__header .section-label {
+    color: var(--color-red);
+}
+
+.company-numbers__title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+}
+
+.company-numbers__description {
+    max-width: 620px;
+    margin-top: 1.25rem;
+    color: #c9c9c9;
+    font-size: 1rem;
+}
+
+.company-numbers__grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.company-stat {
+    display: flex;
+    min-height: 190px;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    border: 1px solid var(--color-gray-800);
+    border-top: 3px solid var(--color-red);
+    background: #181818;
+}
+
+.company-stat__number {
+    display: block;
+    color: var(--color-white);
+    font-size: clamp(3rem, 9vw, 5rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+}
+
+.company-stat__label {
+    max-width: 220px;
+    margin-top: 1rem;
+    color: #c9c9c9;
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
 @media (prefers-reduced-motion: reduce) {
     .clients__track {
         transition: none;
