@@ -34,26 +34,14 @@
     .company-numbers__grid { gap: 1.5rem; }
     .company-stat { min-height: 220px; padding: 2.5rem; }
 
-    /* Services: 3 equal columns in the first row and 2 centered cards below. */
     .services__grid {
         grid-template-columns: repeat(12, minmax(0, 1fr));
         gap: 1.5rem;
         align-items: stretch;
     }
-
-    .services__grid .service-card {
-        grid-column: span 4;
-        width: 100%;
-    }
-
-    .services__grid .service-card:nth-child(4) {
-        grid-column: 3 / span 4;
-    }
-
-    .services__grid .service-card:nth-child(5) {
-        grid-column: 7 / span 4;
-    }
-
+    .services__grid .service-card { grid-column: span 4; width: 100%; }
+    .services__grid .service-card:nth-child(4) { grid-column: 3 / span 4; }
+    .services__grid .service-card:nth-child(5) { grid-column: 7 / span 4; }
     .service-card--wide { grid-column: 7 / span 4; }
     .workflow-step { min-height: 310px; padding: 2.25rem 1.75rem; }
 }
@@ -69,7 +57,6 @@
     .site-header .site-header__item { border-bottom: 1px solid var(--color-gray-100); }
     .site-header .site-header__link { display: flex; width: 100%; min-height: 44px; align-items: center; padding: 0.7rem 0.25rem; font-size: 0.88rem; }
     .site-header .site-header__link::after { right: auto; bottom: 0; left: 0; width: 28px; transform-origin: left; }
-
     .clients__carousel { grid-template-columns: 42px minmax(0, 1fr) 42px; gap: 0.75rem; }
     .clients__control { width: 42px; height: 42px; }
 }
@@ -86,23 +73,19 @@
     .hero__button { width: 100%; }
     .hero__highlights { flex-direction: column; gap: 0.65rem; }
     .about__specialty { padding: 1.5rem; }
-
     .clients__carousel { grid-template-columns: 44px minmax(0, 1fr) 44px; gap: 0.5rem; padding: 0.3rem 0.35rem; }
     .clients__control { width: 44px; height: 44px; }
     .client-card { flex-basis: 100%; min-height: 160px; padding: 1.25rem; }
     .client-card__logo { height: 90px; }
-
     .company-numbers__container { gap: 2.5rem; }
     .company-numbers__grid { grid-template-columns: 1fr; gap: 1rem; }
     .company-stat { min-height: 165px; padding: 1.5rem; }
     .company-stat__number { font-size: clamp(3rem, 16vw, 4.5rem); }
-
     .services__container, .workflow__container { gap: 2.5rem; }
     .services__grid { grid-template-columns: 1fr; gap: 1rem; }
     .service-card { grid-template-columns: 42px minmax(0, 1fr); gap: 1rem; min-height: 205px; padding: 1.5rem; }
     .service-card--wide { grid-column: auto; }
     .service-card::before { width: 150px; height: 150px; border-width: 30px; }
-
     .workflow__steps { grid-template-columns: 1fr; gap: 0; }
     .workflow-step,
     .workflow-step:not(:last-child) { display: grid; grid-template-columns: 52px minmax(0, 1fr); min-height: 0; gap: 1rem; padding: 1.5rem 0 3.25rem; border: 0; border-bottom: 1px solid rgba(255, 255, 255, 0.08); background: transparent; border-radius: 0; }
@@ -132,4 +115,80 @@
     html { scroll-behavior: auto; }
     *, *::before { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
     .clients__track { transition: none; }
+}
+
+/* Final responsive normalization */
+.hero__container,
+.about__container,
+.clients__container,
+.company-numbers__container,
+.services__container,
+.workflow__container,
+.location__container,
+.contact__container,
+.site-footer__container { min-width: 0; }
+
+.hero__title,
+.about__title,
+.clients__title,
+.company-numbers__title,
+.services__title,
+.workflow__title,
+.location__title,
+.contact__title,
+.service-card__title,
+.workflow-step__title,
+.contact-card__link { overflow-wrap: anywhere; }
+
+@media (max-width: 1023px) and (min-width: 768px) {
+    .hero__container { gap: 2.5rem; }
+    .about__container { gap: 3rem; }
+    .workflow-step { min-height: 280px; padding-inline: 1.25rem; }
+    .workflow-step__title { font-size: 1.45rem; }
+    .workflow-step__text { font-size: 0.9rem; }
+}
+
+@media (max-width: 767px) {
+    .container { width: min(100% - 2rem, var(--container-width)); }
+    .section-label { margin-bottom: 0.65rem; font-size: 0.75rem; }
+    .hero__container { padding-block: 1.5rem 2rem; }
+    .hero__title { font-size: clamp(2.25rem, 12vw, 3.5rem); line-height: 1; }
+    .hero__description { margin-top: 1.25rem; line-height: 1.55; }
+    .hero__actions { margin-top: 1.5rem; }
+    .hero__highlights { margin-top: 1.5rem; }
+    .about__container,
+    .company-numbers__container,
+    .services__container,
+    .workflow__container,
+    .location__container,
+    .contact__container { gap: 2rem; }
+    .about__text,
+    .company-numbers__description,
+    .services__description,
+    .workflow__description,
+    .location__description,
+    .contact__description { line-height: 1.6; }
+    .about__specialty,
+    .company-stat,
+    .service-card,
+    .contact-card,
+    .location__info { padding: 1.35rem; }
+    .location__content { gap: 1rem; }
+    .location__map,
+    .location__map iframe { min-height: 280px; }
+    .contact__container { align-items: stretch; }
+    .contact__cards { gap: 0.85rem; }
+    .site-footer__container { gap: 1.25rem; }
+    .site-footer__brand { width: 100%; }
+    .site-footer__text { max-width: none; }
+}
+
+@media (max-width: 480px) {
+    .hero__title { font-size: clamp(2.15rem, 11.5vw, 3rem); }
+    .hero__button { min-height: 46px; padding-inline: 1rem; }
+    .clients__carousel { padding-inline: 0; }
+    .client-card { min-height: 150px; }
+    .client-card__logo { height: 80px; }
+    .location__map,
+    .location__map iframe { min-height: 260px; }
 }
