@@ -1,6 +1,46 @@
 const menuToggle = document.querySelector('.site-header__toggle');
 const navigation = document.querySelector('.site-header__navigation');
 const navigationLinks = document.querySelectorAll('.site-header__link');
+const siteHeader = document.querySelector('.site-header');
+
+const scrollToSection = (targetId) => {
+    const target = document.querySelector(targetId);
+
+    if (!target) {
+        return;
+    }
+
+    const headerOffset = siteHeader ? siteHeader.offsetHeight : 0;
+    const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    window.scrollTo({
+        top: Math.max(0, targetPosition),
+        behavior: reducedMotion ? 'auto' : 'smooth'
+    });
+};
+
+const internalLinks = document.querySelectorAll('a[href^="#"]');
+
+internalLinks.forEach((link) => {
+    link.addEventListener('click', (event) => {
+        const targetId = link.getAttribute('href');
+
+        if (!targetId || targetId === '#') {
+            return;
+        }
+
+        const target = document.querySelector(targetId);
+
+        if (!target) {
+            return;
+        }
+
+        event.preventDefault();
+        scrollToSection(targetId);
+        window.history.replaceState(null, '', targetId);
+    });
+});
 
 if (menuToggle && navigation) {
     const closeMenu = () => {
