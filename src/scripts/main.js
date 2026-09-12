@@ -83,7 +83,7 @@ const clientsCarousel = document.querySelector('.clients__carousel');
 if (clientsCarousel) {
     const viewport = clientsCarousel.querySelector('.clients__viewport');
     const track = clientsCarousel.querySelector('.clients__track');
-    const previousButton = clientsCarousel.querySelector('.clients__control--previous');
+    const previousButton = clientsCarousel.querySelector('.clients__control--prev');
     const nextButton = clientsCarousel.querySelector('.clients__control--next');
     const originalCards = Array.from(track.querySelectorAll('.client-card'));
     const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -285,16 +285,20 @@ if (clientsCarousel) {
 }
 
 const companyNumbers = document.querySelector('.company-numbers');
-const companyStatNumbers = document.querySelectorAll('.company-stat__number[data-target]');
+const companyStatNumbers = document.querySelectorAll('.company-stat__number[data-counter], .company-stat__number[data-target]');
 
 if (companyNumbers && companyStatNumbers.length) {
     const animationDuration = 1500;
     const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     let hasAnimated = false;
 
+    const getTargetValue = (numberElement) => Number(
+        numberElement.dataset.target ?? numberElement.dataset.counter
+    );
+
     const setFinalValues = () => {
         companyStatNumbers.forEach((numberElement) => {
-            const target = Number(numberElement.dataset.target);
+            const target = getTargetValue(numberElement);
             numberElement.textContent = `+${target}`;
         });
     };
@@ -322,7 +326,7 @@ if (companyNumbers && companyStatNumbers.length) {
             const easedProgress = 1 - Math.pow(1 - progress, 3);
 
             companyStatNumbers.forEach((numberElement) => {
-                const target = Number(numberElement.dataset.target);
+                const target = getTargetValue(numberElement);
                 const currentValue = Math.round(target * easedProgress);
 
                 numberElement.textContent = `+${currentValue}`;
