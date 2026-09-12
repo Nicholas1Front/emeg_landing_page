@@ -11,16 +11,19 @@ html {
 
 body {
     min-width: 320px;
+    overflow-x: hidden;
     background: var(--color-white);
     color: var(--color-black);
     font-family: var(--font-family-base);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
 
 img {
     display: block;
     max-width: 100%;
+    height: auto;
 }
 
 a {
@@ -29,8 +32,19 @@ a {
 }
 
 button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button,
 a {
     -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    border: 0;
 }
 
 .container {
@@ -40,6 +54,7 @@ a {
 
 section {
     padding-block: var(--section-padding);
+    scroll-margin-top: var(--header-height);
 }
 
 .section-label {
