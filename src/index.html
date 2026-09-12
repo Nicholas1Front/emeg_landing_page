@@ -3,34 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="EMEG - Manutenção especializada em máquinas, veículos, equipamentos pesados, guindastes e sistemas hidráulicos.">
+    <meta name="description" content="EMEG - Manutenção especializada em máquinas, veículos e equipamentos pesados.">
     <title>EMEG | Manutenção especializada</title>
-
     <link rel="stylesheet" href="./styles/variables.css">
     <link rel="stylesheet" href="./styles/base.css">
     <link rel="stylesheet" href="./styles/components.css">
-    <link rel="stylesheet" href="./styles/contact.css">
     <link rel="stylesheet" href="./styles/responsive.css">
 </head>
 <body>
-    <header class="site-header" id="header">
+    <header class="site-header">
         <div class="container site-header__container">
-            <a class="site-header__brand" href="#hero" aria-label="EMEG - Início">
+            <a class="site-header__brand" href="#home" aria-label="EMEG - Início">
                 <img class="site-header__logo" src="./assets/images/EMEG symbol black and red.png" alt="EMEG">
             </a>
-
-            <button class="site-header__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-navigation">
+            <button class="site-header__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="site-menu">
                 <span class="site-header__toggle-line"></span>
                 <span class="site-header__toggle-line"></span>
                 <span class="site-header__toggle-line"></span>
             </button>
-
-            <nav class="site-header__navigation" id="main-navigation" aria-label="Navegação principal">
-                <ul class="site-header__menu">
-                    <li class="site-header__item"><a class="site-header__link" href="#hero">Início</a></li>
+            <nav class="site-header__navigation" aria-label="Navegação principal">
+                <ul class="site-header__menu" id="site-menu">
+                    <li class="site-header__item"><a class="site-header__link" href="#home">Início</a></li>
                     <li class="site-header__item"><a class="site-header__link" href="#about">Quem somos</a></li>
                     <li class="site-header__item"><a class="site-header__link" href="#clients">Clientes</a></li>
-                    <li class="site-header__item"><a class="site-header__link" href="#company-numbers">Nossos números</a></li>
+                    <li class="site-header__item"><a class="site-header__link" href="#numbers">Nossos números</a></li>
                     <li class="site-header__item"><a class="site-header__link" href="#services">Serviços</a></li>
                     <li class="site-header__item"><a class="site-header__link" href="#workflow">Como trabalhamos</a></li>
                     <li class="site-header__item"><a class="site-header__link" href="#location">Localização</a></li>
@@ -41,24 +37,24 @@
     </header>
 
     <main>
-        <section class="hero" id="hero">
+        <section class="hero" id="home">
             <div class="container hero__container">
                 <div class="hero__content">
                     <span class="hero__eyebrow">Manutenção especializada</span>
                     <h1 class="hero__title">Manutenção que mantém seu equipamento em movimento.</h1>
-                    <p class="hero__description">Soluções em elétrica, mecânica, hidráulica e software para máquinas, veículos e equipamentos pesados.</p>
+                    <p class="hero__description">Soluções elétricas, mecânicas, hidráulicas e de software para máquinas, veículos e equipamentos pesados.</p>
                     <div class="hero__actions">
-                        <a class="hero__button hero__button--primary" href="#contact">Fale com a EMEG</a>
+                        <a class="hero__button hero__button--primary" href="#contact">Fale conosco</a>
                         <a class="hero__button hero__button--secondary" href="#services">Conheça nossos serviços</a>
                     </div>
-                    <div class="hero__highlights" aria-label="Principais diferenciais">
-                        <span class="hero__highlight">+9 anos de mercado</span>
-                        <span class="hero__highlight">Especialistas em guindastes</span>
-                        <span class="hero__highlight">Atendimento externo</span>
+                    <div class="hero__highlights">
+                        <span class="hero__highlight">Atendimento especializado</span>
+                        <span class="hero__highlight">Serviço externo</span>
+                        <span class="hero__highlight">Foco em segurança</span>
                     </div>
                 </div>
-                <div class="hero__visual">
-                    <img class="hero__logo" src="./assets/images/EMEG symbol black and red.png" alt="Símbolo EMEG">
+                <div class="hero__visual" aria-hidden="true">
+                    <img class="hero__logo" src="./assets/images/EMEG symbol black and red.png" alt="">
                 </div>
             </div>
         </section>
@@ -67,59 +63,58 @@
             <div class="container about__container">
                 <div class="about__content">
                     <span class="section-label">Quem somos</span>
-                    <h2 class="about__title">Experiência para manter o que move o seu negócio.</h2>
-                    <p class="about__text">A EMEG atua há mais de 9 anos na manutenção de máquinas, veículos e equipamentos pesados, oferecendo soluções em elétrica, mecânica, hidráulica, software e outros reparos.</p>
-                    <p class="about__text">Nosso trabalho é guiado pela confiança, qualidade e pelo compromisso de solucionar os problemas de cada equipamento para que ele volte a operar com tranquilidade e segurança.</p>
+                    <h2 class="about__title">Experiência para cuidar do que mantém sua operação funcionando.</h2>
+                    <p class="about__text">A EMEG atua com manutenção especializada de máquinas, veículos e equipamentos pesados, buscando entregar confiança, qualidade e soluções para cada necessidade.</p>
                 </div>
-                <div class="about__specialty">
-                    <span class="about__specialty-label">Nossa especialidade</span>
+                <aside class="about__specialty">
+                    <span class="about__specialty-label">Especialidade</span>
                     <h3 class="about__specialty-title">Guindastes e sistemas hidráulicos</h3>
-                    <p class="about__specialty-text">Somos especialistas em manutenção de guindastes e sistemas hidráulicos, além de atuar com elétrica e mecânica em equipamentos pesados, carros, vans e outros veículos.</p>
-                </div>
+                    <p class="about__specialty-text">Conhecimento técnico aplicado a equipamentos que exigem precisão, segurança e confiabilidade.</p>
+                </aside>
             </div>
         </section>
 
         <section class="clients" id="clients">
             <div class="container clients__container">
-                <div class="clients__header">
-                    <span class="section-label">Nossos clientes</span>
-                    <h2 class="clients__title">Empresas que confiam no trabalho da EMEG.</h2>
-                    <p class="clients__description">Nosso trabalho atende diferentes empresas e operações que dependem de equipamentos em pleno funcionamento.</p>
-                </div>
-                <div class="clients__carousel" aria-label="Principais clientes">
-                    <button class="clients__control clients__control--previous" type="button" aria-label="Cliente anterior"><span aria-hidden="true">&#10094;</span></button>
+                <header class="clients__header">
+                    <span class="section-label">Clientes</span>
+                    <h2 class="clients__title">Empresas que confiam no nosso trabalho.</h2>
+                    <p class="clients__description">Uma seleção de empresas atendidas pela EMEG ao longo da nossa trajetória.</p>
+                </header>
+                <div class="clients__carousel" aria-label="Clientes atendidos pela EMEG">
+                    <button class="clients__control clients__control--prev" type="button" aria-label="Cliente anterior">←</button>
                     <div class="clients__viewport">
                         <div class="clients__track">
-                            <article class="client-card"><img class="client-card__logo" src="./assets/images/clients/ast_logo.jpg" alt="AST"></article>
-                            <article class="client-card"><img class="client-card__logo" src="./assets/images/clients/caema_logo.jpg" alt="CAEMA"></article>
-                            <article class="client-card"><img class="client-card__logo" src="./assets/images/clients/clasi_logo.jpg" alt="CLASI"></article>
-                            <article class="client-card"><img class="client-card__logo" src="./assets/images/clients/dinamo_logo.jpg" alt="Dinamo"></article>
-                            <article class="client-card"><img class="client-card__logo" src="./assets/images/clients/eneva_logo.png" alt="ENEVA"></article>
-                            <article class="client-card"><img class="client-card__logo" src="./assets/images/clients/ferronorte_logo.png" alt="Ferronorte"></article>
-                            <article class="client-card"><img class="client-card__logo" src="./assets/images/clients/hospital_sao_domingos_logo.png" alt="Hospital São Domingos"></article>
-                            <article class="client-card"><img class="client-card__logo" src="./assets/images/clients/mactron_log.jpg" alt="Mactron"></article>
-                            <article class="client-card"><img class="client-card__logo" src="./assets/images/clients/omega_logo.png" alt="Omega"></article>
-                            <article class="client-card"><img class="client-card__logo" src="./assets/images/clients/pelicano_construcoes_logo.jpg" alt="Pelicano Construções"></article>
-                            <article class="client-card"><img class="client-card__logo" src="./assets/images/clients/sany_do_brasil_logo.jpg" alt="Sany do Brasil"></article>
-                            <article class="client-card"><img class="client-card__logo" src="./assets/images/clients/zortea_construcoes_logo.png" alt="Zortea Construções"></article>
+                            <article class="client-card"><img class="client-card__logo" src="./assets/images/clients/AST.png" alt="AST"></article>
+                            <article class="client-card"><img class="client-card__logo" src="./assets/images/clients/CAEMA.png" alt="CAEMA"></article>
+                            <article class="client-card"><img class="client-card__logo" src="./assets/images/clients/CLASI.png" alt="CLASI"></article>
+                            <article class="client-card"><img class="client-card__logo" src="./assets/images/clients/Dinamo.png" alt="Dinamo"></article>
+                            <article class="client-card"><img class="client-card__logo" src="./assets/images/clients/ENEVA.png" alt="ENEVA"></article>
+                            <article class="client-card"><img class="client-card__logo" src="./assets/images/clients/Ferronorte.png" alt="Ferronorte"></article>
+                            <article class="client-card"><img class="client-card__logo" src="./assets/images/clients/Hospital São Domingos.png" alt="Hospital São Domingos"></article>
+                            <article class="client-card"><img class="client-card__logo" src="./assets/images/clients/Mactron.png" alt="Mactron"></article>
+                            <article class="client-card"><img class="client-card__logo" src="./assets/images/clients/Omega.png" alt="Omega"></article>
+                            <article class="client-card"><img class="client-card__logo" src="./assets/images/clients/Pelicano Construções.png" alt="Pelicano Construções"></article>
+                            <article class="client-card"><img class="client-card__logo" src="./assets/images/clients/Sany do Brasil.png" alt="Sany do Brasil"></article>
+                            <article class="client-card"><img class="client-card__logo" src="./assets/images/clients/Zortea Construções.png" alt="Zortea Construções"></article>
                         </div>
                     </div>
-                    <button class="clients__control clients__control--next" type="button" aria-label="Próximo cliente"><span aria-hidden="true">&#10095;</span></button>
+                    <button class="clients__control clients__control--next" type="button" aria-label="Próximo cliente">→</button>
                 </div>
             </div>
         </section>
 
-        <section class="company-numbers" id="company-numbers">
+        <section class="company-numbers" id="numbers">
             <div class="container company-numbers__container">
-                <div class="company-numbers__header">
+                <header class="company-numbers__header">
                     <span class="section-label">Nossos números</span>
-                    <h2 class="company-numbers__title">Experiência que pode ser medida.</h2>
-                    <p class="company-numbers__description">Resultados construídos ao longo de mais de 9 anos de trabalho com manutenção e atendimento a diferentes operações.</p>
-                </div>
-                <div class="company-numbers__grid" aria-label="Números da EMEG">
-                    <article class="company-stat"><strong class="company-stat__number" data-target="80">+80</strong><span class="company-stat__label">Clientes já atendidos</span></article>
-                    <article class="company-stat"><strong class="company-stat__number" data-target="250">+250</strong><span class="company-stat__label">Equipamentos reparados</span></article>
-                    <article class="company-stat"><strong class="company-stat__number" data-target="100">+100</strong><span class="company-stat__label">Atendimentos externos</span></article>
+                    <h2 class="company-numbers__title">Experiência que se transforma em resultado.</h2>
+                    <p class="company-numbers__description">Nossa trajetória é construída com atendimento, reparos e soluções para diferentes tipos de equipamentos.</p>
+                </header>
+                <div class="company-numbers__grid">
+                    <article class="company-stat"><span class="company-stat__number" data-counter="80">+80</span><span class="company-stat__label">Clientes já atendidos</span></article>
+                    <article class="company-stat"><span class="company-stat__number" data-counter="250">+250</span><span class="company-stat__label">Equipamentos reparados</span></article>
+                    <article class="company-stat"><span class="company-stat__number" data-counter="100">+100</span><span class="company-stat__label">Atendimentos externos</span></article>
                 </div>
             </div>
         </section>
@@ -128,55 +123,15 @@
             <div class="container services__container">
                 <header class="services__header">
                     <span class="section-label">Serviços</span>
-                    <h2 class="services__title">Manutenção completa para equipamentos que não podem parar.</h2>
-                    <p class="services__description">Atuação especializada em elétrica, mecânica, hidráulica e software, com experiência em guindastes, equipamentos pesados e veículos.</p>
+                    <h2 class="services__title">Manutenção especializada para manter sua operação em movimento.</h2>
+                    <p class="services__description">Atuamos em diferentes frentes de manutenção, com destaque para sistemas hidráulicos e guindastes, buscando solucionar o problema com segurança e qualidade.</p>
                 </header>
-
-                <div class="services__grid" aria-label="Serviços oferecidos pela EMEG">
-                    <article class="service-card service-card--featured">
-                        <span class="service-card__number" aria-hidden="true">01</span>
-                        <div class="service-card__content">
-                            <span class="service-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M14.7 6.3a4.5 4.5 0 0 0-5.9 5.9L3.5 17.5a2.12 2.12 0 0 0 3 3l5.3-5.3a4.5 4.5 0 0 0 5.9-5.9l-2.8 2.8-2.4-.6-.6-2.4 2.8-2.8Z"/><path d="m15.5 3.5 5 5"/></svg></span>
-                            <h3 class="service-card__title">Manutenção hidráulica</h3>
-                            <p class="service-card__text">Manutenção de sistemas hidráulicos com destaque para guindastes e equipamentos pesados.</p>
-                        </div>
-                    </article>
-
-                    <article class="service-card">
-                        <span class="service-card__number" aria-hidden="true">02</span>
-                        <div class="service-card__content">
-                            <span class="service-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M13 2 4 14h7l-1 8 10-13h-7l0-7Z"/></svg></span>
-                            <h3 class="service-card__title">Manutenção elétrica</h3>
-                            <p class="service-card__text">Soluções elétricas para máquinas, equipamentos pesados, carros, vans e outros veículos.</p>
-                        </div>
-                    </article>
-
-                    <article class="service-card">
-                        <span class="service-card__number" aria-hidden="true">03</span>
-                        <div class="service-card__content">
-                            <span class="service-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-1.7 1.7-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1.03 1.56V22h-2.4v-.2a1.7 1.7 0 0 0-1.03-1.56 1.7 1.7 0 0 0-1.88.34l-.06.06-1.7-1.7.06-.06A1.7 1.7 0 0 0 8.46 15a1.7 1.7 0 0 0-1.56-1.03H6.7v-2.4h.2A1.7 1.7 0 0 0 8.46 10a1.7 1.7 0 0 0-.34-1.88l-.06-.06 1.7-1.7.06.06a1.7 1.7 0 0 0 1.88.34A1.7 1.7 0 0 0 12.73 5.2V5h2.4v.2a1.7 1.7 0 0 0 1.03 1.56 1.7 1.7 0 0 0 1.88-.34l-.06-.06A1.7 1.7 0 0 0 19.4 10a1.7 1.7 0 0 0 1.56 1.03h.2v2.4h-.2A1.7 1.7 0 0 0 19.4 15Z"/></svg></span>
-                            <h3 class="service-card__title">Manutenção mecânica</h3>
-                            <p class="service-card__text">Reparos e manutenção mecânica para equipamentos pesados e veículos de diferentes aplicações.</p>
-                        </div>
-                    </article>
-
-                    <article class="service-card">
-                        <span class="service-card__number" aria-hidden="true">04</span>
-                        <div class="service-card__content">
-                            <span class="service-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m8 9-3 3 3 3M16 9l3 3-3 3M14 5l-4 14"/></svg></span>
-                            <h3 class="service-card__title">Software e diagnóstico</h3>
-                            <p class="service-card__text">Atuação também em software e diagnóstico, complementando a manutenção dos equipamentos.</p>
-                        </div>
-                    </article>
-
-                    <article class="service-card service-card--wide">
-                        <span class="service-card__number" aria-hidden="true">05</span>
-                        <div class="service-card__content">
-                            <span class="service-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M3 13h18M5 13l1.5-5h11L19 13M6 17h.01M18 17h.01M5 13v4h14v-4M8 8V5h8v3"/></svg></span>
-                            <h3 class="service-card__title">Outros reparos e atendimento externo</h3>
-                            <p class="service-card__text">Serviços para diferentes necessidades de manutenção, realizados na EMEG ou diretamente no local do cliente.</p>
-                        </div>
-                    </article>
+                <div class="services__grid">
+                    <article class="service-card service-card--featured"><span class="service-card__number">01</span><div class="service-card__content"><span class="service-card__icon" aria-hidden="true">↗</span><h3 class="service-card__title">Hidráulica e guindastes</h3><p class="service-card__text">Manutenção e reparos em sistemas hidráulicos, guindastes e componentes relacionados.</p></div></article>
+                    <article class="service-card"><span class="service-card__number">02</span><div class="service-card__content"><span class="service-card__icon" aria-hidden="true">ϟ</span><h3 class="service-card__title">Elétrica</h3><p class="service-card__text">Diagnóstico e manutenção de sistemas elétricos de máquinas e equipamentos.</p></div></article>
+                    <article class="service-card"><span class="service-card__number">03</span><div class="service-card__content"><span class="service-card__icon" aria-hidden="true">⚙</span><h3 class="service-card__title">Mecânica</h3><p class="service-card__text">Serviços mecânicos para manutenção, reparo e recuperação de equipamentos.</p></div></article>
+                    <article class="service-card"><span class="service-card__number">04</span><div class="service-card__content"><span class="service-card__icon" aria-hidden="true">⌁</span><h3 class="service-card__title">Software e diagnóstico</h3><p class="service-card__text">Apoio técnico e diagnóstico para identificar falhas e direcionar a solução.</p></div></article>
+                    <article class="service-card service-card--wide"><span class="service-card__number">05</span><div class="service-card__content"><span class="service-card__icon" aria-hidden="true">+</span><h3 class="service-card__title">Outros reparos e atendimento externo</h3><p class="service-card__text">Soluções sob demanda e atendimento externo para necessidades específicas do cliente.</p></div></article>
                 </div>
             </div>
         </section>
@@ -188,27 +143,11 @@
                     <h2 class="workflow__title">Confiança em cada etapa do serviço.</h2>
                     <p class="workflow__description">Nosso trabalho é guiado por valores simples: fazer um serviço de confiança e qualidade, solucionar o problema e devolver o equipamento para operar com tranquilidade e segurança.</p>
                 </header>
-
                 <ol class="workflow__steps" aria-label="Princípios de trabalho da EMEG">
-                    <li class="workflow-step">
-                        <div class="workflow-step__node"><span class="workflow-step__number">01</span></div>
-                        <div class="workflow-step__content"><span class="workflow-step__eyebrow">O primeiro passo</span><h3 class="workflow-step__title">Confiança</h3><p class="workflow-step__text">Atendemos cada necessidade com transparência e compromisso com o cliente.</p></div>
-                        <span class="workflow-step__arrow" aria-hidden="true">→</span>
-                    </li>
-                    <li class="workflow-step">
-                        <div class="workflow-step__node"><span class="workflow-step__number">02</span></div>
-                        <div class="workflow-step__content"><span class="workflow-step__eyebrow">Nosso padrão</span><h3 class="workflow-step__title">Qualidade</h3><p class="workflow-step__text">Buscamos executar cada reparo com atenção ao equipamento e à necessidade da operação.</p></div>
-                        <span class="workflow-step__arrow" aria-hidden="true">→</span>
-                    </li>
-                    <li class="workflow-step">
-                        <div class="workflow-step__node"><span class="workflow-step__number">03</span></div>
-                        <div class="workflow-step__content"><span class="workflow-step__eyebrow">Nosso compromisso</span><h3 class="workflow-step__title">Solução</h3><p class="workflow-step__text">O objetivo é sanar o problema e entregar uma solução que atenda ao equipamento.</p></div>
-                        <span class="workflow-step__arrow" aria-hidden="true">→</span>
-                    </li>
-                    <li class="workflow-step workflow-step--last">
-                        <div class="workflow-step__node"><span class="workflow-step__number">04</span></div>
-                        <div class="workflow-step__content"><span class="workflow-step__eyebrow">O resultado</span><h3 class="workflow-step__title">Segurança</h3><p class="workflow-step__text">Entregar tranquilidade para que o equipamento volte a operar com confiança.</p></div>
-                    </li>
+                    <li class="workflow-step"><div class="workflow-step__node"><span class="workflow-step__number">01</span></div><div class="workflow-step__content"><span class="workflow-step__eyebrow">O primeiro passo</span><h3 class="workflow-step__title">Confiança</h3><p class="workflow-step__text">Atendemos cada necessidade com transparência e compromisso com o cliente.</p></div><span class="workflow-step__arrow" aria-hidden="true">→</span></li>
+                    <li class="workflow-step"><div class="workflow-step__node"><span class="workflow-step__number">02</span></div><div class="workflow-step__content"><span class="workflow-step__eyebrow">Nosso padrão</span><h3 class="workflow-step__title">Qualidade</h3><p class="workflow-step__text">Buscamos executar cada reparo com atenção ao equipamento e à necessidade da operação.</p></div><span class="workflow-step__arrow" aria-hidden="true">→</span></li>
+                    <li class="workflow-step"><div class="workflow-step__node"><span class="workflow-step__number">03</span></div><div class="workflow-step__content"><span class="workflow-step__eyebrow">Nosso compromisso</span><h3 class="workflow-step__title">Solução</h3><p class="workflow-step__text">O objetivo é sanar o problema e entregar uma solução que atenda ao equipamento.</p></div><span class="workflow-step__arrow" aria-hidden="true">→</span></li>
+                    <li class="workflow-step workflow-step--last"><div class="workflow-step__node"><span class="workflow-step__number">04</span></div><div class="workflow-step__content"><span class="workflow-step__eyebrow">O resultado</span><h3 class="workflow-step__title">Segurança</h3><p class="workflow-step__text">Entregar tranquilidade para que o equipamento volte a operar com confiança.</p></div></li>
                 </ol>
             </div>
         </section>
@@ -220,14 +159,12 @@
                     <h2 class="location__title">Onde estamos para atender você.</h2>
                     <p class="location__description">Nossa base fica em São Luís/MA. Também realizamos atendimentos externos diretamente no local do cliente.</p>
                 </header>
-
                 <div class="location__content">
                     <div class="location__info">
                         <span class="location__info-label">Endereço</span>
                         <address class="location__address">Avenida Três, N° 214, Quadra 198<br>São Cristóvão, São Luís/MA<br>CEP: 65055-315</address>
                         <p class="location__support">Para solicitar um atendimento ou confirmar informações antes de se deslocar, entre em contato com a equipe EMEG.</p>
                     </div>
-
                     <div class="location__map" aria-label="Mapa com a localização da EMEG">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d458.6509392930797!2d-44.2224726!3d-2.5758715!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7f69bc8517b67a5%3A0x76b467169f9bcd2!2sEmeg%20Eug%C3%AAnio%20m%C3%A1quinas%20e%20guindastes!5e1!3m2!1spt-BR!2sbr!4v1789159453105!5m2!1spt-BR!2sbr" title="Localização da EMEG no Google Maps" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
                     </div>
@@ -242,23 +179,10 @@
                     <h2 class="contact__title">Precisa de manutenção? Fale com a EMEG.</h2>
                     <p class="contact__description">Entre em contato para apresentar sua necessidade, solicitar informações ou conversar sobre um atendimento. Nossa equipe está pronta para ajudar.</p>
                 </header>
-
                 <div class="contact__cards" aria-label="Canais de contato da EMEG">
-                    <article class="contact-card">
-                        <span class="contact-card__icon" aria-hidden="true">☎</span>
-                        <span class="contact-card__label">Telefone</span>
-                        <a class="contact-card__link" href="tel:+5598982014888">(98) 98201-4888</a>
-                    </article>
-                    <article class="contact-card">
-                        <span class="contact-card__icon" aria-hidden="true">☎</span>
-                        <span class="contact-card__label">Telefone</span>
-                        <a class="contact-card__link" href="tel:+5598982225636">(98) 98222-5636</a>
-                    </article>
-                    <article class="contact-card contact-card--email">
-                        <span class="contact-card__icon" aria-hidden="true">@</span>
-                        <span class="contact-card__label">E-mail</span>
-                        <a class="contact-card__link" href="mailto:emeguindaste@gmail.com">emeguindaste@gmail.com</a>
-                    </article>
+                    <article class="contact-card"><span class="contact-card__icon" aria-hidden="true">☎</span><span class="contact-card__label">Telefone</span><p class="contact-card__link">(98) 98201-4888</p></article>
+                    <article class="contact-card"><span class="contact-card__icon" aria-hidden="true">☎</span><span class="contact-card__label">Telefone</span><p class="contact-card__link">(98) 98222-5636</p></article>
+                    <article class="contact-card contact-card--email"><span class="contact-card__icon" aria-hidden="true">@</span><span class="contact-card__label">E-mail</span><p class="contact-card__link">emeguindaste@gmail.com</p></article>
                 </div>
             </div>
         </section>
